@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Basanta Ritu School | Quality Education in Kathmandu</title>
+    <meta name="description" content="Canvas Basanta Ritu School (CBRS) in Samakhusi, Kathmandu. Providing education without compromise from Nursery to Grade 10. 20 years of 100% SEE pass rate.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ================= DESIGN SYSTEM ================= */
+        :root {
+            --navy: #0f172a;          
+            --navy-light: #1e293b;    
+            --red: #dc2626;           
+            --red-hover: #b91c1c;     
+            --gold: #d4a373;          
+            --gold-hover: #c08d5a;
+            
+            --white: #ffffff;
+            --ivory: #f8f9fa;         
+            --text-main: #212529;
+            --text-muted: #6c757d;
+            --border: #dee2e6;
+            
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', 'Noto Sans Devanagari', sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        body { font-family: var(--font-sans); color: var(--text-main); background-color: var(--ivory); line-height: 1.6; overflow-x: hidden; -webkit-text-size-adjust: 100%; }
+
+        /* Typography */
+        h1, h2, h3, h4 { font-family: var(--font-serif); color: var(--navy); line-height: 1.2; }
+        .section-title { font-size: clamp(28px, 4vw, 44px); text-align: center; margin-bottom: 16px; }
+        .section-subtitle { text-align: center; color: var(--text-muted); font-size: 16px; max-width: 700px; margin: 0 auto 40px; }
+        .eyebrow { display: block; font-family: var(--font-sans); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--red); margin-bottom: 12px; text-align: center; }
+
+        /* Buttons */
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 24px; border-radius: 4px; font-size: 15px; font-weight: 500; text-decoration: none; transition: var(--transition); cursor: pointer; border: none; width: auto; }
+        .btn-primary { background-color: var(--navy); color: var(--white); }
+        .btn-primary:hover { background-color: var(--navy-light); transform: translateY(-2px); }
+        .btn-red { background-color: var(--red); color: var(--white); font-weight: 600; }
+        .btn-red:hover { background-color: var(--red-hover); transform: translateY(-2px); }
+        .btn-gold { background-color: var(--gold); color: var(--navy); font-weight: 600; }
+        .btn-gold:hover { background-color: var(--gold-hover); transform: translateY(-2px); }
+        .btn-outline { background-color: transparent; color: var(--white); border: 1px solid var(--white); }
+        .btn-outline:hover { background-color: rgba(255, 255, 255, 0.1); }
+
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+
+        /* ================= HEADER & NAVIGATION ================= */
+        .announcement-bar { background-color: var(--red); color: var(--white); text-align: center; padding: 8px 16px; font-size: 12px; font-weight: 600; letter-spacing: 0.5px; }
+        
+        .site-header { position: sticky; top: 0; width: 100%; height: 70px; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: space-between; padding: 0 5%; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        
+        .logo-container { display: flex; align-items: center; gap: 10px; text-decoration: none; cursor: pointer; z-index: 1001; }
+        .logo-img { height: 45px; width: auto; object-fit: contain; mix-blend-mode: multiply; }
+        .logo-fallback { width: 40px; height: 40px; background: var(--navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold); font-weight: 700; font-family: var(--font-serif); font-size: 16px; }
+        .logo-text { display: flex; flex-direction: column; }
+        .logo-title { font-family: var(--font-serif); font-weight: 700; font-size: 18px; color: var(--navy); line-height: 1.1; }
+        .logo-subtitle { font-size: 10px; color: var(--text-muted); letter-spacing: 0.5px; text-transform: uppercase; }
+
+        .header-right { display: flex; align-items: center; gap: 20px; }
+        .main-nav ul { display: flex; list-style: none; gap: 20px; }
+        .main-nav a { text-decoration: none; color: var(--text-main); font-size: 14px; font-weight: 600; transition: color 0.3s; cursor: pointer; padding-bottom: 4px; border-bottom: 2px solid transparent; }
+        .main-nav a:hover, .main-nav a.active { color: var(--red); border-bottom-color: var(--red); }
+
+        /* Language Switcher */
+        .lang-switch { display: flex; align-items: center; gap: 5px; background: var(--ivory); padding: 4px; border-radius: 4px; border: 1px solid var(--border); }
+        .lang-btn { background: transparent; border: none; padding: 4px 8px; font-size: 12px; font-weight: 600; cursor: pointer; border-radius: 3px; color: var(--text-muted); transition: all 0.2s; }
+        .lang-btn.active { background: var(--navy); color: var(--white); }
+
+        /* Mobile Menu Toggle */
+        .mobile-toggle { display: none; font-size: 28px; background: none; border: none; cursor: pointer; color: var(--navy); z-index: 1001; padding: 5px; }
+        
+        /* Mobile Nav Overlay */
+        .mobile-nav { display: none; position: fixed; top: 70px; left: 0; width: 100%; height: calc(100vh - 70px); background: var(--white); flex-direction: column; padding: 20px; gap: 15px; z-index: 999; overflow-y: auto; }
+        .mobile-nav.active { display: flex; }
+        .mobile-nav a { text-decoration: none; color: var(--navy); font-size: 18px; font-weight: 600; padding: 12px; border-bottom: 1px solid var(--border); }
+        .mobile-nav a:hover { background: var(--ivory); }
+        .mobile-lang-switch { display: flex; gap: 10px; margin-top: 10px; }
+        .mobile-lang-switch .lang-btn { flex: 1; padding: 10px; font-size: 14px; border: 1px solid var(--border); }
+
+        /* ================= PAGE ROUTING LOGIC ================= */
+        .page-section { display: none; animation: fadeIn 0.5s ease; }
+        .page-section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ================= HERO SECTION ================= */
+        .hero { position: relative; min-height: calc(100vh - 100px); display: flex; align-items: center; padding: 0 5%; background-image: url('https://i.imgur.com/CmRCG4t.png'); background-color: var(--navy); background-size: cover; background-position: center; background-repeat: no-repeat; }
+        .hero-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(90deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.85) 50%, rgba(15, 23, 42, 0.6) 100%); z-index: 1; }
+        .hero-container { position: relative; z-index: 2; display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; width: 100%; max-width: 1200px; margin: 0 auto; padding: 60px 0; }
+        .hero-text { color: var(--white); }
+        .hero-text .eyebrow { color: var(--red); text-align: left; }
+        .hero-title { font-size: clamp(32px, 5vw, 56px); color: var(--white); margin-bottom: 20px; }
+        .hero-desc { font-size: 16px; color: #e2e8f0; max-width: 540px; margin-bottom: 30px; line-height: 1.7; }
+        .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+        /* Glassmorphism Cards */
+        .hero-cards { display: flex; flex-direction: column; gap: 12px; justify-content: center; }
+        .glass-card { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 12px; padding: 20px; display: flex; align-items: center; gap: 16px; color: var(--white); transition: var(--transition); }
+        .glass-card:hover { transform: translateX(-5px); background: rgba(255, 255, 255, 0.12); border-color: var(--red); }
+        .card-icon { width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .icon-red { background: var(--red); color: var(--white); }
+        .icon-white { background: rgba(255,255,255,0.15); color: var(--white); }
+        .card-content h4 { font-family: var(--font-sans); font-size: 15px; font-weight: 600; margin-bottom: 2px; color: var(--white); }
+        .card-content p { font-size: 12px; color: #cbd5e1; }
+
+        /* ================= INTRODUCTION SECTION ================= */
+        .intro-section { padding: 60px 0; background: var(--white); }
+        .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .intro-text h2 { font-size: clamp(28px, 4vw, 36px); margin-bottom: 20px; }
+        .intro-text p { font-size: 15px; color: var(--text-muted); margin-bottom: 16px; line-height: 1.8; }
+        .intro-image { border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 4px solid var(--ivory); }
+        .intro-image img { width: 100%; height: auto; display: block; }
+
+        /* ================= SERVICES SECTION ================= */
+        .services-section { padding: 60px 0; background: var(--ivory); }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto; }
+        .service-card { background: var(--white); padding: 30px 20px; text-align: center; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: var(--transition); border-top: 4px solid var(--navy); }
+        .service-card:hover { transform: translateY(-5px); border-top-color: var(--red); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .service-card h3 { font-size: 18px; margin-bottom: 10px; }
+        .service-card p { font-size: 14px; color: var(--text-muted); margin-bottom: 0; }
+
+        /* ================= PAGE HEADERS ================= */
+        .page-header { background: var(--navy); padding: 60px 0 40px; text-align: center; position: relative; overflow: hidden; }
+        .page-header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('https://i.imgur.com/CmRCG4t.png') center/cover; opacity: 0.1; }
+        .page-header h1 { color: var(--white); font-size: clamp(32px, 5vw, 44px); position: relative; z-index: 1; margin-bottom: 12px; }
+        .page-header p { color: #cbd5e1; font-size: 16px; position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+
+        /* ================= GRID CARDS ================= */
+        .section { padding: 60px 0; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .facility-card { background: var(--white); border-radius: 10px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: var(--transition); border-bottom: 4px solid transparent; }
+        .facility-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); border-bottom-color: var(--red); }
+        .facility-img { width: 100%; height: 180px; background: var(--ivory); display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 13px; border-bottom: 1px solid var(--border); }
+        .facility-content { padding: 24px; }
+        .facility-content h3 { font-size: 20px; margin-bottom: 10px; }
+        .facility-content p { color: var(--text-muted); font-size: 14px; }
+
+        /* ================= PRINCIPAL SECTION ================= */
+        .principal-section { padding: 60px 0; background-color: var(--white); }
+        .principal-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; align-items: start; }
+        .principal-img-container { width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 4px solid var(--ivory); }
+        .principal-img-container img { width: 100%; height: auto; display: block; object-fit: cover; aspect-ratio: 4/5; }
+        .principal-message p { font-size: 14px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.6; }
+        .principal-name { margin-top: 24px; }
+        .principal-name h4 { font-family: var(--font-sans); font-size: 18px; margin-bottom: 4px; }
+        .principal-name p { color: var(--text-muted); font-size: 14px; }
+
+        /* ================= CONTACT & MAP ================= */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 30px; align-items: start; }
+        .contact-info-card { background: var(--white); padding: 30px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-top: 4px solid var(--navy); }
+        .contact-item { margin-bottom: 20px; }
+        .contact-item h4 { font-family: var(--font-sans); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 4px; }
+        .contact-item p, .contact-item a { font-size: 15px; color: var(--navy); font-weight: 500; text-decoration: none; }
+        .contact-item a:hover { color: var(--red); }
+        .map-container { height: 100%; min-height: 350px; background: var(--border); border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .map-container iframe { width: 100%; height: 100%; border: none; display: block; }
+
+        /* ================= ADMISSIONS FORM ================= */
+        .form-card { background: var(--white); padding: 30px; border-radius: 10px; color: var(--text-main); box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 700px; margin: 0 auto; }
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 6px; color: var(--navy); }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 4px; font-family: var(--font-sans); font-size: 14px; transition: var(--transition); }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--red); box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1); }
+
+        /* ================= FOOTER ================= */
+        .site-footer { background-color: #0b1120; color: #94a3b8; padding: 60px 0 20px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 30px; margin-bottom: 40px; }
+        .footer-logo h3 { color: var(--white); font-size: 18px; margin-bottom: 10px; }
+        .footer-col h4 { color: var(--white); font-family: var(--font-sans); font-size: 15px; margin-bottom: 15px; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul a { color: #94a3b8; text-decoration: none; transition: var(--transition); cursor: pointer; font-size: 14px; }
+        .footer-col ul a:hover { color: var(--red); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; font-size: 12px; }
+
+        /* ================= RESPONSIVE BREAKPOINTS ================= */
+        @media (max-width: 1024px) {
+            .hero-container, .intro-grid, .principal-grid { grid-template-columns: 1fr; }
+            .grid-3, .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .hero-cards { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            .main-nav { display: none; } 
+            .mobile-toggle { display: block; } 
+            .header-right .lang-switch { display: none; } /* Hide desktop lang switch, show in mobile menu */
+            .grid-3, .services-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .btn { width: 100%; text-align: center; }
+            .hero-ctas { flex-direction: column; width: 100%; }
+            .section, .intro-section, .services-section, .principal-section { padding: 40px 0; }
+            .page-header { padding: 40px 0 30px; }
+            .facility-content h3 { font-size: 18px; }
+            .intro-text h2 { font-size: 24px; }
+        }
+
+        @media (max-width: 480px) {
+            .site-header { height: 60px; }
+            .logo-img { height: 35px; }
+            .logo-title { font-size: 15px; }
+            .logo-subtitle { font-size: 9px; }
+            .mobile-nav { top: 60px; height: calc(100vh - 60px); }
+            .hero-title { font-size: 28px; }
+            .hero-desc { font-size: 14px; }
+            .section-title { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="announcement-bar" data-translate="announcement">
+        📢 Admissions for the 2082/2083 academic session are now open. Limited seats available.
+    </div>
+
+    <header class="site-header">
+        <div class="logo-container" onclick="showPage('home')">
+            <img src="https://i.imgur.com/NUndoRB.jpeg" alt="CBRS Logo" class="logo-img" onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex';">
+            <div id="logo-fallback" class="logo-fallback" style="display: none;">CB</div>
+            <div class="logo-text">
+                <span class="logo-title" data-translate="logo-title">Canvas Basanta Ritu</span>
+                <span class="logo-subtitle" data-translate="logo-subtitle">School · Est. 2039 B.S.</span>
+            </div>
+        </div>
+        
+        <div class="header-right">
+            <!-- Desktop Nav -->
+            <nav class="main-nav">
+                <ul>
+                    <li><a onclick="showPage('home')" id="nav-home" class="active" data-translate="nav-home">Home</a></li>
+                    <li><a onclick="showPage('about')" id="nav-about" data-translate="nav-about">About Us</a></li>
+                    <li><a onclick="showPage('academics')" id="nav-academics" data-translate="nav-academics">Academics</a></li>
+                    <li><a onclick="showPage('facilities')" id="nav-facilities" data-translate="nav-facilities">School Life</a></li>
+                    <li><a onclick="showPage('admissions')" id="nav-admissions" data-translate="nav-admissions">Admissions</a></li>
+                    <li><a onclick="showPage('contact')" id="nav-contact" data-translate="nav-contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Desktop Language Switcher -->
+            <div class="lang-switch">
+                <button class="lang-btn active" onclick="setLanguage('en')">EN</button>
+                <button class="lang-btn" onclick="setLanguage('np')">नेपाली</button>
+            </div>
+
+            <a onclick="showPage('admissions')" class="btn btn-red" style="padding: 8px 16px; font-size: 13px; cursor: pointer; display: none; @media(min-width: 769px) { display: inline-flex; }" data-translate="btn-apply">Apply Now</a>
+        </div>
+        
+        <!-- Mobile Hamburger Button -->
+        <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Toggle Menu">☰</button>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav" id="mobileNav">
+        <a onclick="showPage('home'); toggleMenu()" data-translate="nav-home">Home</a>
+        <a onclick="showPage('about'); toggleMenu()" data-translate="nav-about">About Us</a>
+        <a onclick="showPage('academics'); toggleMenu()" data-translate="nav-academics">Academics</a>
+        <a onclick="showPage('facilities'); toggleMenu()" data-translate="nav-facilities">School Life</a>
+        <a onclick="showPage('admissions'); toggleMenu()" data-translate="nav-admissions">Admissions</a>
+        <a onclick="showPage('contact'); toggleMenu()" data-translate="nav-contact">Contact</a>
+        
+        <!-- Mobile Language Switcher -->
+        <div class="mobile-lang-switch">
+            <button class="lang-btn active" onclick="setLanguage('en')">English</button>
+            <button class="lang-btn" onclick="setLanguage('np')">नेपाली</button>
+        </div>
+
+        <a onclick="showPage('admissions'); toggleMenu()" style="color: var(--red); font-weight: 700;" data-translate="btn-apply">Apply Now →</a>
+    </div>
+
+    <!-- ================= PAGE 1: HOME ================= -->
+    <div id="home" class="page-section active">
+        <section class="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-container">
+                <div class="hero-text">
+                    <span class="eyebrow" data-translate="hero-eyebrow">TRADITION OF EXCELLENCE • FUTURE INNOVATION</span>
+                    <h1 class="hero-title" data-translate="hero-title">Where Young Minds<br>Grow, Discover & Thrive.</h1>
+                    <p class="hero-desc" data-translate="hero-desc">
+                        Building confident, curious, and responsible learners through love, care, and quality education. 20 consecutive years of 100% SEE pass rates.
+                    </p>
+                    <div class="hero-ctas">
+                        <a onclick="showPage('about')" class="btn btn-gold" style="cursor: pointer;" data-translate="btn-explore">Explore Our School</a>
+                        <a onclick="showPage('admissions')" class="btn btn-outline" style="cursor: pointer; color: white; border-color: white;" data-translate="btn-enquire">Enquire About Admission</a>
+                    </div>
+                </div>
+
+                <div class="hero-cards">
+                    <div class="glass-card">
+                        <div class="card-icon icon-red">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                        </div>
+                        <div class="card-content">
+                            <h4 data-translate="card1-title">100% SEE Pass Rate</h4>
+                            <p data-translate="card1-desc">20 consecutive years of academic excellence.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <div class="card-icon icon-red">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+                        </div>
+                        <div class="card-content">
+                            <h4 data-translate="card2-title">SEE 2082: 3.86 GPA</h4>
+                            <p data-translate="card2-desc">Ranked #1 among PABSON schools.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <div class="card-icon icon-white">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </div>
+                        <div class="card-content">
+                            <h4 data-translate="card3-title">Love, Care & Quality</h4>
+                            <p data-translate="card3-desc">A safe, peaceful environment.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Introduction Section -->
+        <section class="intro-section">
+            <div class="container">
+                <div class="intro-grid">
+                    <div class="intro-text">
+                        <span class="eyebrow" style="text-align: left;" data-translate="intro-eyebrow">WELCOME TO CBRS</span>
+                        <h2 data-translate="intro-title">Providing Education Without Compromise</h2>
+                        <p data-translate="intro-desc1">We run classes from Nursery to Grade 10 and we are determined in providing education without compromise.</p>
+                        <p data-translate="intro-desc2">Our school proves to be one of the promising platforms for quality education with up to date infrastructure including sophisticated Montessori Lab, varieties of facilities, highly qualified teachers, and a proper system for the best learning experience.</p>
+                        <a onclick="showPage('about')" class="btn btn-primary" style="margin-top: 12px; cursor: pointer;" data-translate="btn-learn">Learn More About Us</a>
+                    </div>
+                    <div class="intro-image">
+                        <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Students learning at CBRS">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES SECTION -->
+        <section class="services-section">
+            <div class="container">
+                <div class="section-title" style="font-size: 28px; text-align: center; margin-bottom: 10px;" data-translate="services-title">Our Services</div>
+                <p class="section-subtitle" style="margin-bottom: 30px;" data-translate="services-desc">Beyond the classroom, we provide comprehensive support to ensure every student thrives.</p>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3 data-translate="srv1-title">🚌 Safe Transportation</h3>
+                        <p data-translate="srv1-desc">Bus and van facilities covering almost all parts of the Kathmandu valley for safe daily commutes.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3 data-translate="srv2-title">🍎 Nutritious Cafeteria</h3>
+                        <p data-translate="srv2-desc">A vibrant social hub offering nutritious and balanced meals, catering to diverse tastes and dietary needs.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3 data-translate="srv3-title">🧠 Counseling & Support</h3>
+                        <p data-translate="srv3-desc">Dedicated counselors to support the emotional and mental well-being of every student.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3 data-translate="srv4-title">🩺 Health Checkups</h3>
+                        <p data-translate="srv4-desc">Regular medical checkups and health awareness programs to ensure physical well-being.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3 data-translate="srv5-title">💻 Digital Learning</h3>
+                        <p data-translate="srv5-desc">Access to internet-enabled computer labs and digital resources to prepare for the future.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3 data-translate="srv6-title">📚 Library Resources</h3>
+                        <p data-translate="srv6-desc">A quiet space filled with books, journals, and learning resources to foster a love for reading.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRINCIPAL MESSAGE SECTION -->
+        <section class="principal-section">
+            <div class="container">
+                <div class="principal-grid">
+                    <div class="principal-img-container">
+                        <img src="https://i.imgur.com/UlXR1Xo.jpeg" alt="Bhim B. Malla, Founder Principal" onerror="this.src='https://via.placeholder.com/400x500?text=Principal+Photo'">
+                    </div>
+                    
+                    <div class="principal-content">
+                        <span class="eyebrow" style="text-align: left;" data-translate="principal-eyebrow">A MESSAGE FROM OUR FOUNDER</span>
+                        <h2 style="font-size: 28px; margin-bottom: 16px;" data-translate="principal-title">Welcome to CBRS</h2>
+                        
+                        <div class="principal-message">
+                            <p><strong data-translate="principal-dear">Dear Parents and Students,</strong></p>
+                            <p data-translate="principal-p1">As the Founder Principal of Canvas Basanta Ritu School (CBRS), it is both an honor and a challenge to address you. We are committed to achieving our goals and furthering the success of this prestigious institution.</p>
+                            <p data-translate="principal-p2">During our tenure, we are dedicated to a radical transformation of the school’s physical infrastructure and academic standards. We encourage parents to invest in their children’s education through regular discussions. Both teachers and parents will be held responsible for addressing each child’s success and problems.</p>
+                            <p data-translate="principal-p3">CBRS strives to impart a sense of responsibility and leadership in our students. Immediate plans include constructing restrooms, managing drinkable water supply, building computer and science labs, and organizing reception and teachers’ rooms.</p>
+                        </div>
+
+                        <div class="principal-name">
+                            <p data-translate="principal-regards">Best Regards,</p>
+                            <h4 data-translate="principal-name">Bhim B. Malla</h4>
+                            <p data-translate="principal-role">Founder Principal</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ================= PAGE 2: ABOUT US ================= -->
+    <div id="about" class="page-section">
+        <div class="page-header">
+            <h1 data-translate="about-title">About Our School</h1>
+            <p data-translate="about-subtitle">Rooted in love, care, and a commitment to academic excellence since 2039 B.S.</p>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div class="intro-grid">
+                    <div class="intro-text">
+                        <h2 data-translate="about-h2">Our History & Philosophy</h2>
+                        <p data-translate="about-p1">Canvas Basanta Ritu School (CBRS) was established in 2039 B.S. by a versatile and enthusiastic individual who aimed to cater to quality and extraordinary education that is affordable to children from almost every background. </p>
+                        <p data-translate="about-p2">Our philosophy is built on three pillars: Love, Care, and Quality Service. We believe that education is not just about textbooks, but about building character, fostering curiosity, and preparing students to be responsible global citizens.</p>
+                        
+                        <h3 style="margin-top: 20px; margin-bottom: 10px;" data-translate="about-h3-1">The Basanta Ritu Metaphor</h3>
+                        <p data-translate="about-p3">"Basanta Ritu" translates to the Spring season—a time of renewal, growth, and new beginnings. We see every child as a seed with unlimited potential, ready to bloom under the right guidance and care. </p>
+                        
+                        <h3 style="margin-top: 20px; margin-bottom: 10px;" data-translate="about-h3-2">Our Vision & Mission</h3>
+                        <p><strong data-translate="about-vision-strong">Vision:</strong> <span data-translate="about-vision">To create responsible and independent individuals who have the knowledge and attitude to be successful in an ever-changing world.</span></p>
+                        <p><strong data-translate="about-mission-strong">Mission:</strong> <span data-translate="about-mission">To develop one of the premier academic institutions in the region that prepares global citizens with the skills and attitudes required to accept the challenges of a fast-growing society.</span></p>
+                    </div>
+                    <div class="intro-image">
+                        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="School Campus">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ================= PAGE 3: ACADEMICS ================= -->
+    <div id="academics" class="page-section">
+        <div class="page-header">
+            <h1 data-translate="acad-title">Academics</h1>
+            <p data-translate="acad-subtitle">A continuous, carefully designed path from Play Group through Grade 10.</p>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div class="grid-3">
+                    <div class="facility-card">
+                        <div class="facility-img">Montessori Lab</div>
+                        <div class="facility-content">
+                            <h3 data-translate="acad-c1-title">Early Childhood (Play Group - UKG)</h3>
+                            <p data-translate="acad-c1-desc">Our sophisticated Montessori Lab provides sensory-rich, play-based learning focusing on curiosity and foundational literacy.</p>
+                        </div>
+                    </div>
+                    <div class="facility-card">
+                        <div class="facility-img">Primary Classrooms</div>
+                        <div class="facility-content">
+                            <h3 data-translate="acad-c2-title">Primary Level (Grades 1 - 5)</h3>
+                            <p data-translate="acad-c2-desc">Activity-integrated core subjects that build confident learners, emphasizing reading fluency, mathematical reasoning, and creativity.</p>
+                        </div>
+                    </div>
+                    <div class="facility-card">
+                        <div class="facility-img">Secondary Classrooms</div>
+                        <div class="facility-content">
+                            <h3 data-translate="acad-c3-title">Lower Secondary (Grades 6 - 8)</h3>
+                            <p data-translate="acad-c3-desc">Subject specialization begins here. Students gain access to science and computer labs, alongside sports and cultural programs.</p>
+                        </div>
+                    </div>
+                    <div class="facility-card">
+                        <div class="facility-img">SEE Preparation</div>
+                        <div class="facility-content">
+                            <h3 data-translate="acad-c4-title">Secondary (Grades 9 - 10)</h3>
+                            <p data-translate="acad-c4-desc">NEB-aligned curriculum with intensive SEE preparation. Our track record includes 100% pass rates for 20 consecutive years.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Teacher Highlights & Awards -->
+                <div style="margin-top: 40px;">
+                    <h3 style="text-align: center; margin-bottom: 20px;" data-translate="acad-teacher-title">Our Dedicated Teachers</h3>
+                    <p style="text-align: center; color: var(--text-muted); max-width: 700px; margin: 0 auto 30px; font-size: 15px;" data-translate="acad-teacher-desc">We are committed to maintaining an environment that supports inquiry and academic excellence, emotional and physical well-being, appreciation of the arts and diverse cultures, integrity and ethical behavior. </p>
+                    
+                    <div class="teacher-highlight" style="display: flex; align-items: center; gap: 15px; background: var(--ivory); padding: 20px; border-radius: 8px; border-left: 4px solid var(--gold);">
+                        <div style="font-size: 30px;">👩‍🏫</div>
+                        <div>
+                            <h4 style="margin-bottom: 2px; font-size: 16px;" data-translate="acad-award-name">Sunita Bhattarai (Nepali Teacher)</h4>
+                            <p style="font-size: 13px; color: var(--text-muted); margin: 0;" data-translate="acad-award-desc">Awarded The Prominent Teacher Award at the Kathmandu PABSON SEE Felicitation Program 2083 for achieving the highest district average GPA (3.65) in Nepali. </p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 20px; text-align: center;">
+                        <p style="font-size: 13px; color: var(--text-muted);" data-translate="acad-result-desc">SEE 2082 Batch Achievements: Average GPA 3.86 | 9 students achieved a perfect 4.0 GPA. </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ================= PAGE 4: SCHOOL LIFE ================= -->
+    <div id="facilities" class="page-section">
+        <div class="page-header">
+            <h1 data-translate="life-title">School Life & Facilities</h1>
+            <p data-translate="life-subtitle">Up-to-date infrastructure designed for a world-class learning experience.</p>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div class="grid-3">
+                    <div class="facility-card">
+                        <div class="facility-img">Montessori Lab</div>
+                        <div class="facility-content">
+                            <h3 data-translate="life-c1-title">Sophisticated Montessori Lab</h3>
+                            <p data-translate="life-c1-desc">A dedicated environment for play group and early learners, equipped with specialized Montessori materials. </p>
+                        </div>
+                    </div>
+                    <div class="facility-card">
+                        <div class="facility-img">Computer Lab</div>
+                        <div class="facility-content">
+                            <h3 data-translate="life-c2-title">Computer Labs</h3>
+                            <p data-translate="life-c2-desc">Internet-enabled computer labs to ensure our students are digitally literate and ready for the modern world. </p>
+                        </div>
+                    </div>
+                    <div class="facility-card">
+                        <div class="facility-img">Futsal Court</div>
+                        <div class="facility-content">
+                            <h3 data-translate="life-c3-title">Futsal & Sports Ground</h3>
+                            <p data-translate="life-c3-desc">We encourage physical fitness and teamwork through our dedicated futsal court and outdoor play areas. </p>
+                        </div>
+                    </div>
+                    <div class="facility-card">
+                        <div class="facility-img">Science Lab</div>
+                        <div class="facility-content">
+                            <h3 data-translate="life-c4-title">Science Laboratories</h3>
+                            <p data-translate="life-c4-desc">Fully equipped Physics, Chemistry, and Biology labs for hands-on experiments and practical learning. </p>
+                        </div>
+                    </div>
+                    <div class="facility-card">
+                        <div class="facility-img">Library</div>
+                        <div class="facility-content">
+                            <h3 data-translate="life-c5-title">Library & Resource Center</h3>
+                            <p data-translate="life-c5-desc">A quiet space filled with books, journals, and learning resources to foster a lifelong love for reading. </p>
+                        </div>
+                    </div>
+                    <div class="facility-card">
+                        <div class="facility-img">Playground</div>
+                        <div class="facility-content">
+                            <h3 data-translate="life-c6-title">Peaceful Playground</h3>
+                            <p data-translate="life-c6-desc">Located away from city pollution, our playground provides a safe space for recreation and genuine childhood. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ================= PAGE 5: ADMISSIONS ================= -->
+    <div id="admissions" class="page-section">
+        <div class="page-header">
+            <h1 data-translate="adm-title">Admissions</h1>
+            <p data-translate="adm-subtitle">Give your child a strong foundation for tomorrow. Join the CBRS family.</p>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div class="form-card">
+                    <h3 style="margin-bottom: 20px; text-align: center;" data-translate="adm-form-title">Admission Enquiry Form</h3>
+                    <form onsubmit="event.preventDefault(); alert('Thank you! Your enquiry has been submitted. Our team will contact you shortly.');">
+                        <div class="form-group">
+                            <label data-translate="adm-label-name">Parent/Guardian Name *</label>
+                            <input type="text" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-translate="adm-label-phone">Phone Number *</label>
+                            <input type="tel" placeholder="98XXXXXXXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-translate="adm-label-grade">Desired Grade *</label>
+                            <select required>
+                                <option value="" data-translate="adm-select-grade">Select a grade...</option>
+                                <option data-translate="adm-grade-play">Play Group</option>
+                                <option data-translate="adm-grade-nursery">Nursery</option>
+                                <option data-translate="adm-grade-lkg">LKG</option>
+                                <option data-translate="adm-grade-ukg">UKG</option>
+                                <option data-translate="adm-grade-1">Grade 1</option>
+                                <option data-translate="adm-grade-2">Grade 2</option>
+                                <option data-translate="adm-grade-3">Grade 3</option>
+                                <option data-translate="adm-grade-4">Grade 4</option>
+                                <option data-translate="adm-grade-5">Grade 5</option>
+                                <option data-translate="adm-grade-6">Grade 6</option>
+                                <option data-translate="adm-grade-7">Grade 7</option>
+                                <option data-translate="adm-grade-8">Grade 8</option>
+                                <option data-translate="adm-grade-9">Grade 9</option>
+                                <option data-translate="adm-grade-10">Grade 10</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label data-translate="adm-label-msg">Message (Optional)</label>
+                            <textarea rows="3" placeholder="Any specific questions?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-red" style="width: 100%;" data-translate="adm-btn">Submit Enquiry</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ================= PAGE 6: CONTACT ================= -->
+    <div id="contact" class="page-section">
+        <div class="page-header">
+            <h1 data-translate="con-title">Contact Us</h1>
+            <p data-translate="con-subtitle">We'd love to hear from you. Visit us or give us a call.</p>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info-card">
+                        <h3 style="margin-bottom: 20px;" data-translate="con-h3">Get In Touch</h3>
+                        
+                        <div class="contact-item">
+                            <h4 data-translate="con-address-h">Address</h4>
+                            <p data-translate="con-address-p">Samakhusi, Ranibari-26<br>Kathmandu, Nepal</p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <h4 data-translate="con-phone-h">Phone</h4>
+                            <p><a href="tel:+977014987741">01-4987741</a><br><a href="tel:+977014953522">01-4953522</a><br><a href="tel:+9779841373981">9841-373981</a></p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <h4 data-translate="con-email-h">Email</h4>
+                            <p><a href="mailto:info@canvasbasantaritus.edu.np">info@canvasbasantaritus.edu.np</a><br><a href="mailto:cbrs2039@gmail.com">cbrs2039@gmail.com</a></p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <h4 data-translate="con-hours-h">Office Hours</h4>
+                            <p data-translate="con-hours-p">Sunday – Friday: 9:00 AM – 4:00 PM<br>Saturday: Closed</p>
+                        </div>
+                    </div>
+                    
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.422277745247!2d85.30369431506212!3d27.738573982778994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb18f7048b4d49%3A0x4f3b3a6b6a8d8e0!2sCanvas%20Basanta%20Ritu%20School!5e0!3m2!1sen!2snp!4v1625654321654!5m2!1sen!2snp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <h3 data-translate="footer-logo">Canvas Basanta Ritu School</h3>
+                    </div>
+                    <p style="font-size: 13px; margin-bottom: 15px;" data-translate="footer-desc">Love, Care, Quality Service. NEB Affiliated. Providing education without compromise from Nursery to Grade 10.</p>
+                </div>
+                <div class="footer-col">
+                    <h4 data-translate="footer-quick">Quick Links</h4>
+                    <ul>
+                        <li><a onclick="showPage('home')" data-translate="nav-home">Home</a></li>
+                        <li><a onclick="showPage('about')" data-translate="nav-about">About Us</a></li>
+                        <li><a onclick="showPage('academics')" data-translate="nav-academics">Academics</a></li>
+                        <li><a onclick="showPage('facilities')" data-translate="nav-facilities">School Life</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 data-translate="footer-adm">Admissions</h4>
+                    <ul>
+                        <li><a onclick="showPage('admissions')" data-translate="footer-apply">Apply Now</a></li>
+                        <li><a onclick="showPage('contact')" data-translate="nav-contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 data-translate="footer-contact-h">Contact Us</h4>
+                    <ul>
+                        <li data-translate="footer-address">Samakhusi, Ranibari-26</li>
+                        <li data-translate="footer-city">Kathmandu, Nepal</li>
+                        <li>01-4987741</li>
+                        <li>info@canvasbasantaritus.edu.np</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-translate="footer-copy">&copy; 2026 Canvas Basanta Ritu School. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= JAVASCRIPT FOR PAGE ROUTING & LANGUAGE ================= -->
+    <script>
+        // ================= TRANSLATION DATA =================
+        const translations = {
+            en: {
+                "announcement": "📢 Admissions for the 2082/2083 academic session are now open. Limited seats available.",
+                "logo-title": "Canvas Basanta Ritu",
+                "logo-subtitle": "School · Est. 2039 B.S.",
+                "nav-home": "Home",
+                "nav-about": "About Us",
+                "nav-academics": "Academics",
+                "nav-facilities": "School Life",
+                "nav-admissions": "Admissions",
+                "nav-contact": "Contact",
+                "btn-apply": "Apply Now",
+                "hero-eyebrow": "TRADITION OF EXCELLENCE • FUTURE INNOVATION",
+                "hero-title": "Where Young Minds<br>Grow, Discover & Thrive.",
+                "hero-desc": "Building confident, curious, and responsible learners through love, care, and quality education. 20 consecutive years of 100% SEE pass rates.",
+                "btn-explore": "Explore Our School",
+                "btn-enquire": "Enquire About Admission",
+                "card1-title": "100% SEE Pass Rate",
+                "card1-desc": "20 consecutive years of academic excellence.",
+                "card2-title": "SEE 2082: 3.86 GPA",
+                "card2-desc": "Ranked #1 among PABSON schools.",
+                "card3-title": "Love, Care & Quality",
+                "card3-desc": "A safe, peaceful environment.",
+                "intro-eyebrow": "WELCOME TO CBRS",
+                "intro-title": "Providing Education Without Compromise",
+                "intro-desc1": "We run classes from Nursery to Grade 10 and we are determined in providing education without compromise.",
+                "intro-desc2": "Our school proves to be one of the promising platforms for quality education with up to date infrastructure including sophisticated Montessori Lab, varieties of facilities, highly qualified teachers, and a proper system for the best learning experience.",
+                "btn-learn": "Learn More About Us",
+                "services-title": "Our Services",
+                "services-desc": "Beyond the classroom, we provide comprehensive support to ensure every student thrives.",
+                "srv1-title": "🚌 Safe Transportation",
+                "srv1-desc": "Bus and van facilities covering almost all parts of the Kathmandu valley for safe daily commutes.",
+                "srv2-title": "🍎 Nutritious Cafeteria",
+                "srv2-desc": "A vibrant social hub offering nutritious and balanced meals, catering to diverse tastes and dietary needs.",
+                "srv3-title": "🧠 Counseling & Support",
+                "srv3-desc": "Dedicated counselors to support the emotional and mental well-being of every student.",
+                "srv4-title": "🩺 Health Checkups",
+                "srv4-desc": "Regular medical checkups and health awareness programs to ensure physical well-being.",
+                "srv5-title": "💻 Digital Learning",
+                "srv5-desc": "Access to internet-enabled computer labs and digital resources to prepare for the future.",
+                "srv6-title": "📚 Library Resources",
+                "srv6-desc": "A quiet space filled with books, journals, and learning resources to foster a love for reading.",
+                "principal-eyebrow": "A MESSAGE FROM OUR FOUNDER",
+                "principal-title": "Welcome to CBRS",
+                "principal-dear": "Dear Parents and Students,",
+                "principal-p1": "As the Founder Principal of Canvas Basanta Ritu School (CBRS), it is both an honor and a challenge to address you. We are committed to achieving our goals and furthering the success of this prestigious institution.",
+                "principal-p2": "During our tenure, we are dedicated to a radical transformation of the school’s physical infrastructure and academic standards. We encourage parents to invest in their children’s education through regular discussions. Both teachers and parents will be held responsible for addressing each child’s success and problems.",
+                "principal-p3": "CBRS strives to impart a sense of responsibility and leadership in our students. Immediate plans include constructing restrooms, managing drinkable water supply, building computer and science labs, and organizing reception and teachers’ rooms.",
+                "principal-regards": "Best Regards,",
+                "principal-name": "Bhim B. Malla",
+                "principal-role": "Founder Principal",
+                "about-title": "About Our School",
+                "about-subtitle": "Rooted in love, care, and a commitment to academic excellence since 2039 B.S.",
+                "about-h2": "Our History & Philosophy",
+                "about-p1": "Canvas Basanta Ritu School (CBRS) was established in 2039 B.S. by a versatile and enthusiastic individual who aimed to cater to quality and extraordinary education that is affordable to children from almost every background.",
+                "about-p2": "Our philosophy is built on three pillars: Love, Care, and Quality Service. We believe that education is not just about textbooks, but about building character, fostering curiosity, and preparing students to be responsible global citizens.",
+                "about-h3-1": "The Basanta Ritu Metaphor",
+                "about-p3": "\"Basanta Ritu\" translates to the Spring season—a time of renewal, growth, and new beginnings. We see every child as a seed with unlimited potential, ready to bloom under the right guidance and care.",
+                "about-h3-2": "Our Vision & Mission",
+                "about-vision-strong": "Vision:",
+                "about-vision": "To create responsible and independent individuals who have the knowledge and attitude to be successful in an ever-changing world.",
+                "about-mission-strong": "Mission:",
+                "about-mission": "To develop one of the premier academic institutions in the region that prepares global citizens with the skills and attitudes required to accept the challenges of a fast-growing society.",
+                "acad-title": "Academics",
+                "acad-subtitle": "A continuous, carefully designed path from Play Group through Grade 10.",
+                "acad-c1-title": "Early Childhood (Play Group - UKG)",
+                "acad-c1-desc": "Our sophisticated Montessori Lab provides sensory-rich, play-based learning focusing on curiosity and foundational literacy.",
+                "acad-c2-title": "Primary Level (Grades 1 - 5)",
+                "acad-c2-desc": "Activity-integrated core subjects that build confident learners, emphasizing reading fluency, mathematical reasoning, and creativity.",
+                "acad-c3-title": "Lower Secondary (Grades 6 - 8)",
+                "acad-c3-desc": "Subject specialization begins here. Students gain access to science and computer labs, alongside sports and cultural programs.",
+                "acad-c4-title": "Secondary (Grades 9 - 10)",
+                "acad-c4-desc": "NEB-aligned curriculum with intensive SEE preparation. Our track record includes 100% pass rates for 20 consecutive years.",
+                "acad-teacher-title": "Our Dedicated Teachers",
+                "acad-teacher-desc": "We are committed to maintaining an environment that supports inquiry and academic excellence, emotional and physical well-being, appreciation of the arts and diverse cultures, integrity and ethical behavior.",
+                "acad-award-name": "Sunita Bhattarai (Nepali Teacher)",
+                "acad-award-desc": "Awarded The Prominent Teacher Award at the Kathmandu PABSON SEE Felicitation Program 2083 for achieving the highest district average GPA (3.65) in Nepali.",
+                "acad-result-desc": "SEE 2082 Batch Achievements: Average GPA 3.86 | 9 students achieved a perfect 4.0 GPA.",
+                "life-title": "School Life & Facilities",
+                "life-subtitle": "Up-to-date infrastructure designed for a world-class learning experience.",
+                "life-c1-title": "Sophisticated Montessori Lab",
+                "life-c1-desc": "A dedicated environment for play group and early learners, equipped with specialized Montessori materials.",
+                "life-c2-title": "Computer Labs",
+                "life-c2-desc": "Internet-enabled computer labs to ensure our students are digitally literate and ready for the modern world.",
+                "life-c3-title": "Futsal & Sports Ground",
+                "life-c3-desc": "We encourage physical fitness and teamwork through our dedicated futsal court and outdoor play areas.",
+                "life-c4-title": "Science Laboratories",
+                "life-c4-desc": "Fully equipped Physics, Chemistry, and Biology labs for hands-on experiments and practical learning.",
+                "life-c5-title": "Library & Resource Center",
+                "life-c5-desc": "A quiet space filled with books, journals, and learning resources to foster a lifelong love for reading.",
+                "life-c6-title": "Peaceful Playground",
+                "life-c6-desc": "Located away from city pollution, our playground provides a safe space for recreation and genuine childhood.",
+                "adm-title": "Admissions",
+                "adm-subtitle": "Give your child a strong foundation for tomorrow. Join the CBRS family.",
+                "adm-form-title": "Admission Enquiry Form",
+                "adm-label-name": "Parent/Guardian Name *",
+                "adm-label-phone": "Phone Number *",
+                "adm-label-grade": "Desired Grade *",
+                "adm-select-grade": "Select a grade...",
+                "adm-grade-play": "Play Group",
+                "adm-grade-nursery": "Nursery",
+                "adm-grade-lkg": "LKG",
+                "adm-grade-ukg": "UKG",
+                "adm-grade-1": "Grade 1",
+                "adm-grade-2": "Grade 2",
+                "adm-grade-3": "Grade 3",
+                "adm-grade-4": "Grade 4",
+                "adm-grade-5": "Grade 5",
+                "adm-grade-6": "Grade 6",
+                "adm-grade-7": "Grade 7",
+                "adm-grade-8": "Grade 8",
+                "adm-grade-9": "Grade 9",
+                "adm-grade-10": "Grade 10",
+                "adm-label-msg": "Message (Optional)",
+                "adm-btn": "Submit Enquiry",
+                "con-title": "Contact Us",
+                "con-subtitle": "We'd love to hear from you. Visit us or give us a call.",
+                "con-h3": "Get In Touch",
+                "con-address-h": "Address",
+                "con-address-p": "Samakhusi, Ranibari-26<br>Kathmandu, Nepal",
+                "con-phone-h": "Phone",
+                "con-email-h": "Email",
+                "con-hours-h": "Office Hours",
+                "con-hours-p": "Sunday – Friday: 9:00 AM – 4:00 PM<br>Saturday: Closed",
+                "footer-logo": "Canvas Basanta Ritu School",
+                "footer-desc": "Love, Care, Quality Service. NEB Affiliated. Providing education without compromise from Nursery to Grade 10.",
+                "footer-quick": "Quick Links",
+                "footer-adm": "Admissions",
+                "footer-apply": "Apply Now",
+                "footer-contact-h": "Contact Us",
+                "footer-address": "Samakhusi, Ranibari-26",
+                "footer-city": "Kathmandu, Nepal",
+                "footer-copy": "© 2026 Canvas Basanta Ritu School. All rights reserved."
+            },
+            np: {
+                "announcement": "📢 शैक्षिक सत्र २०८२/०८३ को लागि भर्ना खुला छ। सीमित सिटहरू उपलब्ध।",
+                "logo-title": "क्यानभास बसन्त ऋतु",
+                "logo-subtitle": "स्कूल · स्थापना २०३९ साल",
+                "nav-home": "गृहपृष्ठ",
+                "nav-about": "हाम्रोबारे",
+                "nav-academics": "शैक्षिक",
+                "nav-facilities": "स्कूल जीवन",
+                "nav-admissions": "भर्ना",
+                "nav-contact": "सम्पर्क",
+                "btn-apply": "अहिले आवेदन दिनुहोस्",
+                "hero-eyebrow": "उत्कृष्टताको परम्परा • भविष्यको नवीनता",
+                "hero-title": "जहाँ युवा दिमागहरू<br>बढ्छन्, पत्ता लगाउँछन् र फस्टाउँछन्।",
+                "hero-desc": "माया, हेरचाह र गुणस्तरीय शिक्षाको माध्यमबाट आत्मविश्वासी, जिज्ञासु र जिम्मेवार शिक्षार्थीहरू निर्माण गर्दै। २० लगातार वर्ष १००% SEE पास दर।",
+                "btn-explore": "हाम्रो स्कूल अन्वेषण गर्नुहोस्",
+                "btn-enquire": "भर्नाको बारेमा सोधपुछ गर्नुहोस्",
+                "card1-title": "१००% SEE पास दर",
+                "card1-desc": "२० लगातार वर्षको शैक्षिक उत्कृष्टता।",
+                "card2-title": "SEE २०८२: ३.८६ GPA",
+                "card2-desc": "PABSON स्कूलहरूमा #१ स्थानमा।",
+                "card3-title": "माया, हेरचाह र गुणस्तर",
+                "card3-desc": "सुरक्षित, शान्त वातावरण।",
+                "intro-eyebrow": "CBRS मा स्वागत छ",
+                "intro-title": "सम्झौता बिना शिक्षा प्रदान गर्दै",
+                "intro-desc1": "हामी नर्सरीदेखि कक्षा १० सम्म कक्षाहरू सञ्चालन गर्छौं र सम्झौता बिना शिक्षा प्रदान गर्न प्रतिबद्ध छौं।",
+                "intro-desc2": "हाम्रो स्कूल उत्कृष्ट मोन्टेसरी ल्याब, विविध सुविधाहरू, उच्च योग्यता प्राप्त शिक्षकहरू, र उत्कृष्ट सिकाइ अनुभवको लागि उचित प्रणाली सहित गुणस्तरीय शिक्षाको लागि एक आशाजनक प्लेटफर्म साबित भएको छ।",
+                "btn-learn": "हाम्रोबारे थप जान्नुहोस्",
+                "services-title": "हाम्रा सेवाहरू",
+                "services-desc": "कक्षाकोठा बाहिर, हामी प्रत्येक विद्यार्थीलाई फस्टाउन व्यापक समर्थन प्रदान गर्छौं।",
+                "srv1-title": "🚌 सुरक्षित यातायात",
+                "srv1-desc": "सुरक्षित दैनिक यात्राको लागि काठमाडौं उपत्यकाका लगभग सबै भागहरू समेट्ने बस र भ्यान सुविधाहरू।",
+                "srv2-title": "🍎 पौष्टिक क्याफेटेरिया",
+                "srv2-desc": "पौष्टिक र सन्तुलित खाना प्रदान गर्ने एक जीवन्त सामाजिक केन्द्र, विविध स्वाद र आहार आवश्यकताहरूको ख्याल राख्दै।",
+                "srv3-title": "🧠 परामर्श र समर्थन",
+                "srv3-desc": "प्रत्येक विद्यार्थीको भावनात्मक र मानसिक कल्याणलाई समर्थन गर्न समर्पित परामर्शदाताहरू।",
+                "srv4-title": "🩺 स्वास्थ्य जाँच",
+                "srv4-desc": "शारीरिक कल्याण सुनिश्चित गर्न नियमित चिकित्सा जाँच र स्वास्थ्य सचेतना कार्यक्रमहरू।",
+                "srv5-title": "💻 डिजिटल सिकाइ",
+                "srv5-desc": "भविष्यको लागि तयारी गर्न इन्टरनेट-सक्षम कम्प्युटर ल्याब र डिजिटल स्रोतहरूमा पहुँच।",
+                "srv6-title": "📚 पुस्तकालय स्रोतहरू",
+                "srv6-desc": "पढ्ने प्रेम जगाउन पुस्तक, जर्नल र सिकाइ स्रोतहरूले भरिएको शान्त ठाउँ।",
+                "principal-eyebrow": "हाम्रो संस्थापकको सन्देश",
+                "principal-title": "CBRS मा स्वागत छ",
+                "principal-dear": "प्रिय अभिभावक र विद्यार्थीहरू,",
+                "principal-p1": "क्यानभास बसन्त ऋतु स्कूल (CBRS) को संस्थापक प्रिन्सिपलको रूपमा, तपाईंहरूलाई सम्बोधन गर्नु मेरो लागि सम्मान र चुनौती दुवै हो। हामी हाम्रा लक्ष्यहरू हासिल गर्न र यस प्रतिष्ठित शैक्षिक संस्थाको सफलतालाई अगाडि बढाउन प्रतिबद्ध छौं।",
+                "principal-p2": "हाम्रो कार्यकालमा, हामी स्कूलको भौतिक पूर्वाधार र शैक्षिक मापदण्डको आमूल परिवर्तनमा समर्पित छौं। हामी अभिभावकहरूलाई नियमित छलफलको माध्यमबाट आफ्ना बच्चाहरूको शिक्षामा लगानी गर्न प्रोत्साहित गर्छौं। शिक्षक र अभिभावक दुवैलाई प्रत्येक बच्चाको सफलता र समस्याहरू सम्बोधन गर्न जिम्मेवार ठहराइनेछ।",
+                "principal-p3": "CBRS ले हाम्रा विद्यार्थीहरूमा जिम्मेवारी र नेतृत्वको भावना जगाउन प्रयास गर्दछ। तत्कालका योजनाहरूमा शौचालयहरू निर्माण गर्ने, पिउने पानीको आपूर्ति व्यवस्थापन गर्ने, कम्प्युटर र विज्ञान प्रयोगशालाहरू निर्माण गर्ने, र स्वागत कक्ष र शिक्षकहरूको कोठा व्यवस्थित गर्ने समावेश छन्।",
+                "principal-regards": "सादर,",
+                "principal-name": "भीम बी. मल्ल",
+                "principal-role": "संस्थापक प्रिन्सिपल",
+                "about-title": "हाम्रो स्कूलको बारेमा",
+                "about-subtitle": "माया, हेरचाह, र २०३९ सालदेखि शैक्षिक उत्कृष्टताको प्रतिबद्धतामा जरा गाडेको।",
+                "about-h2": "हाम्रो इतिहास र दर्शन",
+                "about-p1": "क्यानभास बसन्त ऋतु स्कूल (CBRS) २०३९ सालमा एक बहुमुखी र उत्साही व्यक्तिद्वारा स्थापना गरिएको थियो जसले लगभग सबै पृष्ठभूमिका बच्चाहरूको लागि किफायती गुणस्तरीय र असाधारण शिक्षा प्रदान गर्ने लक्ष्य राखेको थियो।",
+                "about-p2": "हाम्रो दर्शन तीन स्तम्भहरूमा आधारित छ: माया, हेरचाह, र गुणस्तरीय सेवा। हामी विश्वास गर्छौं कि शिक्षा केवल पाठ्यपुस्तकको बारेमा मात्र होइन, तर चरित्र निर्माण, जिज्ञासा जगाउने, र विद्यार्थीहरूलाई जिम्मेवार विश्व नागरिक बनाउन तयार पार्ने बारेमा हो।",
+                "about-h3-1": "बसन्त ऋतु रूपक",
+                "about-p3": "\"बसन्त ऋतु\" को अर्थ वसन्त ऋतु हो—नवीकरण, वृद्धि, र नयाँ सुरुवातको समय। हामी प्रत्येक बच्चालाई असीमित सम्भावना भएको बीउको रूपमा देख्छौं, जुन सही मार्गदर्शन र हेरचाहमा फुल्न तयार छ।",
+                "about-h3-2": "हाम्रो दृष्टिकोण र मिशन",
+                "about-vision-strong": "दृष्टिकोण:",
+                "about-vision": "जिम्मेवार र स्वतन्त्र व्यक्तिहरू सिर्जना गर्नु जससँग सधैं परिवर्तन हुने संसारमा सफल हुन आवश्यक ज्ञान र दृष्टिकोण छ।",
+                "about-mission-strong": "मिशन:",
+                "about-mission": "क्षेत्रको एक प्रमुख शैक्षिक संस्था विकास गर्नु जसले द्रुत रूपमा बढ्दो समाजको चुनौतीहरू स्वीकार गर्न आवश्यक सीप र दृष्टिकोण भएका विश्व नागरिकहरू तयार पार्छ।",
+                "acad-title": "शैक्षिक",
+                "acad-subtitle": "प्ले ग्रुपदेखि कक्षा १० सम्मको निरन्तर, सावधानीपूर्वक डिजाइन गरिएको मार्ग।",
+                "acad-c1-title": "प्रारम्भिक बाल्यकाल (प्ले ग्रुप - UKG)",
+                "acad-c1-desc": "हाम्रो परिष्कृत मोन्टेसरी ल्याबले जिज्ञासा र आधारभूत साक्षरतामा केन्द्रित, संवेदी-समृद्ध, खेल-आधारित सिकाइ प्रदान गर्दछ।",
+                "acad-c2-title": "प्राथमिक स्तर (कक्षा १ - ५)",
+                "acad-c2-desc": "गतिविधि-एकीकृत मुख्य विषयहरू जसले आत्मविश्वासी शिक्षार्थीहरू निर्माण गर्दछ, पढ्ने प्रवाह, गणितीय तर्क, र रचनात्मकतामा जोड दिन्छ।",
+                "acad-c3-title": "निम्न माध्यमिक (कक्षा ६ - ८)",
+                "acad-c3-desc": "विषय विशेषज्ञता यहाँ सुरु हुन्छ। विद्यार्थीहरूले खेलकुद र सांस्कृतिक कार्यक्रमहरूसँगै विज्ञान र कम्प्युटर ल्याबहरूमा पहुँच पाउँछन्।",
+                "acad-c4-title": "माध्यमिक (कक्षा ९ - १०)",
+                "acad-c4-desc": "गहन SEE तयारीको साथ NEB-सम्बद्ध पाठ्यक्रम। हाम्रो ट्र्याक रेकर्डमा २० लगातार वर्ष १००% पास दर समावेश छ।",
+                "acad-teacher-title": "हाम्रा समर्पित शिक्षकहरू",
+                "acad-teacher-desc": "हामी जिज्ञासा र शैक्षिक उत्कृष्टता, भावनात्मक र शारीरिक कल्याण, कला र विविध संस्कृतिको प्रशंसा, सत्यनिष्ठा र नैतिक व्यवहारलाई समर्थन गर्ने वातावरण कायम राख्न प्रतिबद्ध छौं।",
+                "acad-award-name": "सुनिता भट्टराई (नेपाली शिक्षक)",
+                "acad-award-desc": "नेपालीमा उच्चतम जिल्ला औसत GPA (३.६५) हासिल गरेकोमा काठमाडौं PABSON SEE सम्मान कार्यक्रम २०८३ मा प्रमुख शिक्षक पुरस्कार प्रदान गरियो।",
+                "acad-result-desc": "SEE २०८२ ब्याच उपलब्धिहरू: औसत GPA ३.८६ | ९ विद्यार्थीहरूले पूर्ण ४.० GPA हासिल गरे।",
+                "life-title": "स्कूल जीवन र सुविधाहरू",
+                "life-subtitle": "विश्व-स्तरीय सिकाइ अनुभवको लागि डिजाइन गरिएको अद्यावधिक पूर्वाधार।",
+                "life-c1-title": "परिष्कृत मोन्टेसरी ल्याब",
+                "life-c1-desc": "प्ले ग्रुप र प्रारम्भिक शिक्षार्थीहरूको लागि समर्पित वातावरण, विशेष मोन्टेसरी सामग्रीहरूले सुसज्जित।",
+                "life-c2-title": "कम्प्युटर ल्याबहरू",
+                "life-c2-desc": "हाम्रा विद्यार्थीहरू डिजिटल रूपमा साक्षर र आधुनिक संसारको लागि तयार छन् भन्ने सुनिश्चित गर्न इन्टरनेट-सक्षम कम्प्युटर ल्याबहरू।",
+                "life-c3-title": "फुटसल र खेल मैदान",
+                "life-c3-desc": "हामी हाम्रो समर्पित फुटसल कोर्ट र बाहिरी खेल क्षेत्रहरू मार्फत शारीरिक फिटनेस र टोली कार्यलाई प्रोत्साहित गर्छौं।",
+                "life-c4-title": "विज्ञान प्रयोगशालाहरू",
+                "life-c4-desc": "ह्यान्ड्स-अन प्रयोग र व्यावहारिक सिकाइको लागि पूर्ण रूपमा सुसज्जित भौतिक, रसायन, र जीवविज्ञान ल्याबहरू।",
+                "life-c5-title": "पुस्तकालय र स्रोत केन्द्र",
+                "life-c5-desc": "आजीवन पढ्ने प्रेम जगाउन पुस्तक, जर्नल, र सिकाइ स्रोतहरूले भरिएको शान्त ठाउँ।",
+                "life-c6-title": "शान्त खेल मैदान",
+                "life-c6-desc": "शहरको प्रदूषणबाट टाढा अवस्थित, हाम्रो खेल मैदानले मनोरञ्जन र वास्तविक बाल्यकालको लागि सुरक्षित ठाउँ प्रदान गर्दछ।",
+                "adm-title": "भर्ना",
+                "adm-subtitle": "आफ्नो बच्चालाई भोलिको लागि बलियो जग दिनुहोस्। CBRS परिवारमा सामेल हुनुहोस्।",
+                "adm-form-title": "भर्ना सोधपुछ फारम",
+                "adm-label-name": "अभिभावक/संरक्षकको नाम *",
+                "adm-label-phone": "फोन नम्बर *",
+                "adm-label-grade": "इच्छित कक्षा *",
+                "adm-select-grade": "कक्षा छान्नुहोस्...",
+                "adm-grade-play": "प्ले ग्रुप",
+                "adm-grade-nursery": "नर्सरी",
+                "adm-grade-lkg": "LKG",
+                "adm-grade-ukg": "UKG",
+                "adm-grade-1": "कक्षा १",
+                "adm-grade-2": "कक्षा २",
+                "adm-grade-3": "कक्षा ३",
+                "adm-grade-4": "कक्षा ४",
+                "adm-grade-5": "कक्षा ५",
+                "adm-grade-6": "कक्षा ६",
+                "adm-grade-7": "कक्षा ७",
+                "adm-grade-8": "कक्षा ८",
+                "adm-grade-9": "कक्षा ९",
+                "adm-grade-10": "कक्षा १०",
+                "adm-label-msg": "सन्देश (वैकल्पिक)",
+                "adm-btn": "सोधपुछ पेश गर्नुहोस्",
+                "con-title": "सम्पर्क गर्नुहोस्",
+                "con-subtitle": "हामी तपाईंबाट सुन्न चाहन्छौं। हामीलाई भेट्नुहोस् वा कल गर्नुहोस्।",
+                "con-h3": "सम्पर्कमा रहनुहोस्",
+                "con-address-h": "ठेगाना",
+                "con-address-p": "सामाखुसी, रानीबारी-२६<br>काठमाडौं, नेपाल",
+                "con-phone-h": "फोन",
+                "con-email-h": "इमेल",
+                "con-hours-h": "कार्यालय समय",
+                "con-hours-p": "आइतबार – शुक्रबार: बिहान ९:०० – दिउँसो ४:००<br>शनिबार: बन्द",
+                "footer-logo": "क्यानभास बसन्त ऋतु स्कूल",
+                "footer-desc": "माया, हेरचाह, गुणस्तरीय सेवा। NEB सम्बद्ध। नर्सरीदेखि कक्षा १० सम्म सम्झौता बिना शिक्षा प्रदान गर्दै।",
+                "footer-quick": "द्रुत लिङ्कहरू",
+                "footer-adm": "भर्ना",
+                "footer-apply": "अहिले आवेदन दिनुहोस्",
+                "footer-contact-h": "सम्पर्क गर्नुहोस्",
+                "footer-address": "सामाखुसी, रानीबारी-२६",
+                "footer-city": "काठमाडौं, नेपाल",
+                "footer-copy": "© २०२६ क्यानभास बसन्त ऋतु स्कूल। सर्वाधिकार सुरक्षित।"
+            }
+        };
+
+        let currentLang = 'en';
+
+        // Function to change language
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('cbrs-lang', lang);
+            document.documentElement.lang = lang === 'np' ? 'ne' : 'en';
+
+            // Update all elements with data-translate attribute
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (translations[lang][key]) {
+                    // Check if the translation contains HTML (like <br>)
+                    if (translations[lang][key].includes('<')) {
+                        el.innerHTML = translations[lang][key];
+                    } else {
+                        el.textContent = translations[lang][key];
+                    }
+                }
+            });
+
+            // Update button states
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                const text = btn.textContent.trim();
+                if (lang === 'en' && (text === 'EN' || text === 'English')) {
+                    btn.classList.add('active');
+                } else if (lang === 'np' && text === 'नेपाली') {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // Page Routing
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(page => page.classList.remove('active'));
+
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            const navLinks = document.querySelectorAll('.main-nav a');
+            navLinks.forEach(link => link.classList.remove('active'));
+            
+            const activeNav = document.getElementById('nav-' + pageId);
+            if (activeNav) {
+                activeNav.classList.add('active');
+            }
+        }
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+            
+            const toggleBtn = document.querySelector('.mobile-toggle');
+            if (mobileNav.classList.contains('active')) {
+                toggleBtn.innerHTML = '✕';
+                document.body.style.overflow = 'hidden';
+            } else {
+                toggleBtn.innerHTML = '☰';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Load saved language on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('cbrs-lang') || 'en';
+            setLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>
