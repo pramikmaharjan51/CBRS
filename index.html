@@ -120,6 +120,15 @@
         .intro-image { border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 4px solid var(--ivory); }
         .intro-image img { width: 100%; height: auto; display: block; }
 
+        /* Image replacing heading */
+        .intro-heading-image {
+            width: 100%;
+            max-width: 480px;
+            height: auto;
+            display: block;
+            margin-bottom: 20px;
+        }
+
         /* ================= SERVICES SECTION ================= */
         .services-section { padding: 60px 0; background: var(--ivory); }
         .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto; }
@@ -194,7 +203,7 @@
         @media (max-width: 768px) {
             .main-nav { display: none; } 
             .mobile-toggle { display: block; } 
-            .header-right .lang-switch { display: none; } /* Hide desktop lang switch, show in mobile menu */
+            .header-right .lang-switch { display: none; }
             .grid-3, .services-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; }
             .btn { width: 100%; text-align: center; }
@@ -334,7 +343,7 @@
                 <div class="intro-grid">
                     <div class="intro-text">
                         <span class="eyebrow" style="text-align: left;" data-translate="intro-eyebrow">WELCOME TO CBRS</span>
-                        <h2 data-translate="intro-title">Providing Education Without Compromise</h2>
+                        <img src="https://i.imgur.com/PIa3KEx.png" alt="Providing Education Without Compromise" class="intro-heading-image">
                         <p data-translate="intro-desc1">We run classes from Nursery to Grade 10 and we are determined in providing education without compromise.</p>
                         <p data-translate="intro-desc2">Our school proves to be one of the promising platforms for quality education with up to date infrastructure including sophisticated Montessori Lab, varieties of facilities, highly qualified teachers, and a proper system for the best learning experience.</p>
                         <a onclick="showPage('about')" class="btn btn-primary" style="margin-top: 12px; cursor: pointer;" data-translate="btn-learn">Learn More About Us</a>
@@ -639,7 +648,8 @@
                     </div>
                     
                     <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.422277745247!2d85.30369431506212!3d27.738573982778994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb18f7048b4d49%3A0x4f3b3a6b6a8d8e0!2sCanvas%20Basanta%20Ritu%20School!5e0!3m2!1sen!2snp!4v1625654321654!5m2!1sen!2snp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <!-- UPDATED GOOGLE MAPS IFRAME WITH PLACE MODE -->
+                        <iframe src="https://maps.google.com/maps?q=Canvas%20Basanta%20Ritu%20School%2C%20Kathmandu&t=&z=16&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="width:100%; height:100%; border:none;"></iframe>
                     </div>
                 </div>
             </div>
