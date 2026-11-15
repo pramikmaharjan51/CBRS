@@ -59,7 +59,7 @@
         
         .site-header { position: sticky; top: 0; width: 100%; height: 70px; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: space-between; padding: 0 5%; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         
-        .logo-container { display: flex; align-items: center; gap: 10px; text-decoration: none; cursor: pointer; z-index: 1001; }
+        .logo-container { display: flex; align-items: center; gap: 10px; text-decoration: none; cursor: pointer; z-index: 1001; flex-shrink: 0; }
         .logo-img { height: 45px; width: auto; object-fit: contain; mix-blend-mode: multiply; }
         .logo-fallback { width: 40px; height: 40px; background: var(--navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold); font-weight: 700; font-family: var(--font-serif); font-size: 16px; }
         .logo-text { display: flex; flex-direction: column; }
@@ -93,19 +93,19 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* ================= HERO SECTION ================= */
-        .hero { position: relative; min-height: calc(100vh - 100px); display: flex; align-items: center; padding: 0 5%; background-image: url('https://i.imgur.com/CmRCG4t.png'); background-color: var(--navy); background-size: cover; background-position: center; background-repeat: no-repeat; }
+        .hero { position: relative; min-height: calc(100vh - 100px); display: flex; align-items: center; padding: 60px 5%; background-image: url('https://i.imgur.com/CmRCG4t.png'); background-color: var(--navy); background-size: cover; background-position: center; background-repeat: no-repeat; }
         .hero-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(90deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.85) 50%, rgba(15, 23, 42, 0.6) 100%); z-index: 1; }
-        .hero-container { position: relative; z-index: 2; display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; width: 100%; max-width: 1200px; margin: 0 auto; padding: 60px 0; }
+        .hero-container { position: relative; z-index: 2; display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; width: 100%; max-width: 1200px; margin: 0 auto; }
         .hero-text { color: var(--white); }
         .hero-text .eyebrow { color: var(--red); text-align: left; }
-        .hero-title { font-size: clamp(32px, 5vw, 56px); color: var(--white); margin-bottom: 20px; }
+        .hero-title { font-size: clamp(32px, 5vw, 56px); color: var(--white); margin-bottom: 20px; line-height: 1.1; }
         .hero-desc { font-size: 16px; color: #e2e8f0; max-width: 540px; margin-bottom: 30px; line-height: 1.7; }
         .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
 
         /* Glassmorphism Cards */
         .hero-cards { display: flex; flex-direction: column; gap: 12px; justify-content: center; }
-        .glass-card { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 12px; padding: 20px; display: flex; align-items: center; gap: 16px; color: var(--white); transition: var(--transition); }
-        .glass-card:hover { transform: translateX(-5px); background: rgba(255, 255, 255, 0.12); border-color: var(--red); }
+        .glass-card { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 12px; padding: 20px; display: flex; align-items: center; gap: 16px; color: var(--white); transition: var(--transition); }
+        .glass-card:hover { transform: translateX(-5px); background: rgba(255, 255, 255, 0.15); border-color: var(--red); }
         .card-icon { width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .icon-red { background: var(--red); color: var(--white); }
         .icon-white { background: rgba(255,255,255,0.15); color: var(--white); }
@@ -113,21 +113,10 @@
         .card-content p { font-size: 12px; color: #cbd5e1; }
 
         /* ================= INTRODUCTION SECTION ================= */
-        .intro-section { padding: 60px 0; background: var(--white); }
-        .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .intro-section { padding: 80px 0; background: var(--white); }
+        .intro-text { max-width: 900px; margin: 0 auto; text-align: center; }
         .intro-text h2 { font-size: clamp(28px, 4vw, 36px); margin-bottom: 20px; }
-        .intro-text p { font-size: 15px; color: var(--text-muted); margin-bottom: 16px; line-height: 1.8; }
-        .intro-image { border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 4px solid var(--ivory); }
-        .intro-image img { width: 100%; height: auto; display: block; }
-
-        /* Image replacing heading */
-        .intro-heading-image {
-            width: 100%;
-            max-width: 480px;
-            height: auto;
-            display: block;
-            margin-bottom: 20px;
-        }
+        .intro-text p { font-size: 16px; color: var(--text-muted); margin-bottom: 16px; line-height: 1.8; }
 
         /* ================= SERVICES SECTION ================= */
         .services-section { padding: 60px 0; background: var(--ivory); }
@@ -192,37 +181,81 @@
         .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; font-size: 12px; }
 
         /* ================= RESPONSIVE BREAKPOINTS ================= */
+        
+        /* Tablet & Smaller Desktop */
         @media (max-width: 1024px) {
-            .hero-container, .intro-grid, .principal-grid { grid-template-columns: 1fr; }
+            .hero-container, .principal-grid { grid-template-columns: 1fr; }
             .grid-3, .services-grid { grid-template-columns: repeat(2, 1fr); }
             .footer-grid { grid-template-columns: 1fr 1fr; }
             .contact-grid { grid-template-columns: 1fr; }
-            .hero-cards { display: none; }
+            
+            /* Show hero cards on tablet */
+            .hero-cards { display: flex; flex-direction: row; flex-wrap: wrap; margin-top: 20px; }
+            .glass-card { flex: 1 1 30%; min-width: 200px; }
         }
 
+        /* Mobile */
         @media (max-width: 768px) {
             .main-nav { display: none; } 
             .mobile-toggle { display: block; } 
             .header-right .lang-switch { display: none; }
+            .header-right .btn-red { display: none; } /* Hide desktop apply button */
+            
+            /* Make all grids single column */
             .grid-3, .services-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; }
-            .btn { width: 100%; text-align: center; }
+            
+            /* Adjust Hero */
+            .hero { padding: 40px 5%; min-height: auto; }
+            .hero-title { font-size: 36px; }
+            .hero-desc { font-size: 15px; margin-bottom: 24px; }
             .hero-ctas { flex-direction: column; width: 100%; }
+            .btn { width: 100%; text-align: center; }
+            
+            /* Mobile Hero Cards - Ensure they stack nicely and are visible */
+            .hero-cards { 
+                display: flex; 
+                flex-direction: column; 
+                gap: 12px; 
+                margin-top: 30px; 
+                width: 100%;
+            }
+            .glass-card { 
+                padding: 15px; 
+                width: 100%;
+                flex: none;
+            }
+
+            /* Sections */
             .section, .intro-section, .services-section, .principal-section { padding: 40px 0; }
             .page-header { padding: 40px 0 30px; }
+            
+            /* Typography */
+            .intro-text h2, .section-title { font-size: 26px; }
             .facility-content h3 { font-size: 18px; }
-            .intro-text h2 { font-size: 24px; }
+            
+            /* Principal Image adjustment */
+            .principal-img-container { max-width: 100%; margin-bottom: 20px; }
+            
+            /* Form */
+            .form-card { padding: 20px; }
         }
 
+        /* Small Mobile */
         @media (max-width: 480px) {
             .site-header { height: 60px; }
             .logo-img { height: 35px; }
             .logo-title { font-size: 15px; }
             .logo-subtitle { font-size: 9px; }
             .mobile-nav { top: 60px; height: calc(100vh - 60px); }
+            
             .hero-title { font-size: 28px; }
             .hero-desc { font-size: 14px; }
-            .section-title { font-size: 24px; }
+            .section-title { font-size: 22px; }
+            .glass-card { padding: 12px; }
+            .card-icon { width: 35px; height: 35px; }
+            .card-content h4 { font-size: 14px; }
+            .card-content p { font-size: 11px; }
         }
     </style>
 </head>
@@ -261,7 +294,7 @@
                 <button class="lang-btn" onclick="setLanguage('np')">नेपाली</button>
             </div>
 
-            <a onclick="showPage('admissions')" class="btn btn-red" style="padding: 8px 16px; font-size: 13px; cursor: pointer; display: none; @media(min-width: 769px) { display: inline-flex; }" data-translate="btn-apply">Apply Now</a>
+            <a onclick="showPage('admissions')" class="btn btn-red" style="padding: 8px 16px; font-size: 13px; cursor: pointer;" data-translate="btn-apply">Apply Now</a>
         </div>
         
         <!-- Mobile Hamburger Button -->
@@ -283,7 +316,7 @@
             <button class="lang-btn" onclick="setLanguage('np')">नेपाली</button>
         </div>
 
-        <a onclick="showPage('admissions'); toggleMenu()" style="color: var(--red); font-weight: 700;" data-translate="btn-apply">Apply Now →</a>
+        <a onclick="showPage('admissions'); toggleMenu()" style="color: var(--red); font-weight: 700; text-align: center; margin-top: 10px;" data-translate="btn-apply">Apply Now →</a>
     </div>
 
     <!-- ================= PAGE 1: HOME ================= -->
@@ -340,10 +373,9 @@
         <!-- Introduction Section -->
         <section class="intro-section">
             <div class="container">
-                <!-- Modified: Removed grid and images to span full width -->
-                <div class="intro-text" style="max-width: 900px; margin: 0 auto; text-align: center;">
-                    <span class="eyebrow" style="text-align: center;" data-translate="intro-eyebrow">WELCOME TO CBRS</span>
-                    <h2 style="margin-bottom: 20px;" data-translate="intro-title">Providing Education Without Compromise</h2>
+                <div class="intro-text">
+                    <span class="eyebrow" data-translate="intro-eyebrow">WELCOME TO CBRS</span>
+                    <h2 data-translate="intro-title">Providing Education Without Compromise</h2>
                     <p data-translate="intro-desc1">We run classes from Nursery to Grade 10 and we are determined in providing education without compromise.</p>
                     <p data-translate="intro-desc2">Our school proves to be one of the promising platforms for quality education with up to date infrastructure including sophisticated Montessori Lab, varieties of facilities, highly qualified teachers, and a proper system for the best learning experience.</p>
                     <a onclick="showPage('about')" class="btn btn-primary" style="margin-top: 24px; cursor: pointer;" data-translate="btn-learn">Learn More About Us</a>
@@ -354,8 +386,8 @@
         <!-- SERVICES SECTION -->
         <section class="services-section">
             <div class="container">
-                <div class="section-title" style="font-size: 28px; text-align: center; margin-bottom: 10px;" data-translate="services-title">Our Services</div>
-                <p class="section-subtitle" style="margin-bottom: 30px;" data-translate="services-desc">Beyond the classroom, we provide comprehensive support to ensure every student thrives.</p>
+                <div class="section-title" data-translate="services-title">Our Services</div>
+                <p class="section-subtitle" data-translate="services-desc">Beyond the classroom, we provide comprehensive support to ensure every student thrives.</p>
                 <div class="services-grid">
                     <div class="service-card">
                         <h3 data-translate="srv1-title">🚌 Safe Transportation</h3>
@@ -423,8 +455,8 @@
         </div>
         <section class="section">
             <div class="container">
-                <div class="intro-grid">
-                    <div class="intro-text">
+                <div class="intro-grid" style="display: block;"> <!-- Overridden to block for full width text flow on mobile -->
+                    <div class="intro-text" style="text-align: left; max-width: 100%;">
                         <h2 data-translate="about-h2">Our History & Philosophy</h2>
                         <p data-translate="about-p1">Canvas Basanta Ritu School (CBRS) was established in 2039 B.S. by a versatile and enthusiastic individual who aimed to cater to quality and extraordinary education that is affordable to children from almost every background. </p>
                         <p data-translate="about-p2">Our philosophy is built on three pillars: Love, Care, and Quality Service. We believe that education is not just about textbooks, but about building character, fostering curiosity, and preparing students to be responsible global citizens.</p>
@@ -435,9 +467,6 @@
                         <h3 style="margin-top: 20px; margin-bottom: 10px;" data-translate="about-h3-2">Our Vision & Mission</h3>
                         <p><strong data-translate="about-vision-strong">Vision:</strong> <span data-translate="about-vision">To create responsible and independent individuals who have the knowledge and attitude to be successful in an ever-changing world.</span></p>
                         <p><strong data-translate="about-mission-strong">Mission:</strong> <span data-translate="about-mission">To develop one of the premier academic institutions in the region that prepares global citizens with the skills and attitudes required to accept the challenges of a fast-growing society.</span></p>
-                    </div>
-                    <div class="intro-image">
-                        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="School Campus">
                     </div>
                 </div>
             </div>
